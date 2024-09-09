@@ -15,19 +15,28 @@ try:
     if operation == 'READ':
         if file_present(path):
             with open(path, 'r') as file_obj:
-                data = file_obj.read().splitlines()
-                print(data)
+                try:
+                    data = file_obj.read().splitlines()
+                    print(data)
+                finally:
+                    file_obj.close()
         else:
             print("File not found")
     elif operation == 'WRITE':
         if file_present(path):
             with open(path, 'w') as file_obj:
-                file_obj.write(text)
-                print("Write operation successful")
+                try:
+                    file_obj.write(text)
+                    print("Write operation successful")
+                finally:
+                    file_obj.close()
         else:
             with open(path, 'a') as file_obj:
-                file_obj.write(text)
-                print("Write operation successful")
+                try:
+                    file_obj.write(text)
+                    print("Write operation successful")
+                finally:
+                    file_obj.close()
     else:
         print("Invalid operation. Please enter 'READ' or 'WRITE'.")
 except Exception as e:
