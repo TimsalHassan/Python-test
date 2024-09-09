@@ -32,5 +32,3 @@ try:
         print("Invalid operation. Please enter 'READ' or 'WRITE'.")
 except Exception as e:
     print(f"An error occurred: {e}")
-finally:
-    file_obj.close()
